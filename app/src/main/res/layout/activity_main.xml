@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+ <GridLayout
+     android:id="@+id/board"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:columnCount="9"
+     android:rowCount="9">
+
+ </GridLayout>
+    <TextView
+        android:id="@+id/messageText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/black"
+        android:text="Enter Initial Numbers:"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/solve_button"
+        style="@style/CustomButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/mediumMargin"
+        android:text="@string/solve" />
+</LinearLayout>
