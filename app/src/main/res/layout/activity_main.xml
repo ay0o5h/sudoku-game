@@ -10,9 +10,9 @@
      android:layout_gravity="center"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
-     android:layout_marginStart="16dp"
-     android:layout_marginEnd="16dp"
-     android:layout_marginTop="16dp"
+     android:layout_marginStart="@dimen/mediumMargin"
+     android:layout_marginEnd="@dimen/mediumMargin"
+     android:layout_marginTop="@dimen/mediumMargin"
      android:columnCount="9"
      android:rowCount="9">
 
