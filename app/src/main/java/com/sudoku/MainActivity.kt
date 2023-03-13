@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.GridLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
@@ -59,8 +60,7 @@ class MainActivity : AppCompatActivity() {
                 if (solveSudoku(0, 0)) {
                     setBoard()
                 } else {
-                    val textView = findViewById<TextView>(R.id.messageText)
-                    textView.text = "Invalid input"
+                    Toast.makeText(this,"Invalid input",Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -75,15 +75,13 @@ class MainActivity : AppCompatActivity() {
         ).toInt()
     }
     private fun getBoard(): Boolean {
+
         for (i in 0 until 9) {
             for (j in 0 until 9) {
                 val editText = gridLayout.getChildAt(i * 9 + j) as EditText
                 val value = editText.text.toString()
                 if (value.isNotEmpty()) {
                     val num = value.toInt()
-                    if (num !in 1..9) {
-                        return false
-                    }
                     board[i][j] = num
                 }
             }
@@ -146,7 +144,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
         return true
     }
  }
