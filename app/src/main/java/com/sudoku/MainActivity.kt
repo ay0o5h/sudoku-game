@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-         gridLayout = findViewById<GridLayout>(R.id.board)
+         gridLayout = findViewById(R.id.board)
         val bg = ContextCompat.getDrawable(this, R.drawable.input_background)
 
         for (i in 0 until 9) {
@@ -31,11 +30,12 @@ class MainActivity : AppCompatActivity() {
                 editText.layoutParams = GridLayout.LayoutParams().apply {
                     columnSpec = GridLayout.spec(j)
                     rowSpec = GridLayout.spec(i)
-                    width = ViewGroup.LayoutParams.WRAP_CONTENT
-                    height = ViewGroup.LayoutParams.WRAP_CONTENT
+                    width = 100
+                    height =200
 
                 }
-//                editText.background = bg
+                editText.background = bg
+                editText.setPadding(8, 8, 8, 8)
                 editText.inputType = InputType.TYPE_CLASS_NUMBER
                 editText.setTextColor(Color.BLACK)
                 editText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
@@ -110,21 +110,17 @@ class MainActivity : AppCompatActivity() {
         return false
     }
     private fun isValid(row: Int, col: Int, num: Int): Boolean {
-        // Check row
         for (i in 0 until 9) {
             if (board[row][i] == num) {
                 return false
             }
         }
-
-        // Check column
         for (i in 0 until 9) {
             if (board[i][col] == num) {
                 return false
             }
         }
 
-        // Check 3x3 box
         val boxRowStart = (row / 3) * 3
         val boxColStart = (col / 3) * 3
 
