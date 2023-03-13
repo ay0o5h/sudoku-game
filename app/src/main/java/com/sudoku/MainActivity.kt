@@ -1,5 +1,6 @@
 package com.sudoku
 
+import android.content.Context
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
          gridLayout = findViewById(R.id.board)
         val bg = ContextCompat.getDrawable(this, R.drawable.input_background)
+        val heightInDp = 40 // Set the height to 48 dp
+        val heightInPx = dpToPx(heightInDp, this)
+        val widthInDp = 36 // Set the height to 48 dp
+        val widthInPx = dpToPx(widthInDp, this)
 
         for (i in 0 until 9) {
             for (j in 0 until 9) {
@@ -30,10 +35,11 @@ class MainActivity : AppCompatActivity() {
                 editText.layoutParams = GridLayout.LayoutParams().apply {
                     columnSpec = GridLayout.spec(j)
                     rowSpec = GridLayout.spec(i)
-                    width = 100
-                    height =200
+                    width = widthInPx
+                    height =heightInPx
 
                 }
+
                 editText.background = bg
                 editText.setPadding(8, 8, 8, 8)
                 editText.inputType = InputType.TYPE_CLASS_NUMBER
@@ -58,6 +64,15 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+
+    fun dpToPx(dp: Int, context: Context): Int {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dp.toFloat(),
+            context.resources.displayMetrics
+        ).toInt()
     }
     private fun getBoard(): Boolean {
         for (i in 0 until 9) {
